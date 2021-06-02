@@ -19,4 +19,5 @@ public class Ghost extends Character{
 	public Ghost(Ghost ghost) {
 		super(ghost.id,ghost.lat,ghost.lon,ghost.alt,ghost.speed,ghost.radius);
 	}
+	
 }

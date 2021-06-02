@@ -139,14 +139,10 @@ public class DBconnection {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection connection = 
-					DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
-
-
+			Connection connection = DriverManager.getConnection(jdbcUrl, jdbcUser, jdbcPassword);
 			Statement statement = connection.createStatement();
 			String ans = this.dbInfoToString();      //making the string with the specific game board's hash code.
-
-
+			
 			//select data
 			String allCustomersQuery = ans;         //reading from the database all the games in the specific game board.
 			ResultSet resultSet = statement.executeQuery(allCustomersQuery);
@@ -161,17 +157,13 @@ public class DBconnection {
 			statement.close();		
 			connection.close();		
 		}
-
 		catch (SQLException sqle) {
 			System.out.println("SQLException: " + sqle.getMessage());
 			System.out.println("Vendor Error: " + sqle.getErrorCode());
 		}
-
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
 		return rank;
-
 	}	
 }

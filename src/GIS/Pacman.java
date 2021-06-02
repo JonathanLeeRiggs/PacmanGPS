@@ -4,9 +4,6 @@ import GIS_project4.Character;
 import Coords.myCoords;
 import Geom.Point3D;
 
-/**
- * this class represents pacman. pacman has id, latitude, longitude, altitude, speed and radius.
- */
 public class Pacman extends Character{
 	/**
 	 * this method is a constructor.

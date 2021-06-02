@@ -171,14 +171,14 @@ public class Window4 extends JFrame implements MouseListener,ActionListener {
 	 */
 	public void paint(Graphics g)
 	{
-		g.drawImage(mapImage, 0, 0, getWidth()-8, getHeight()-8, this);
+		g.drawImage(mapImage, 0, 0, getWidth()-8, getHeight()-8, this); // paints the map on the screen
 		if(x!=-1 && y!=-1) {
 			int r = 15;
 			x = x - (r / 2);
 			y = y - (r / 2);
 		}
 		Graphics2D g2d = (Graphics2D) g; 	
-		
+
 		///draws the mainBoxList according to the selected file///
 		Iterator<Box> boxIterator = mainBoxList.Iterator();
 		boxListPainter(boxIterator, g2d,areThereBoxes);
@@ -224,28 +224,14 @@ public class Window4 extends JFrame implements MouseListener,ActionListener {
 			isSimMode=false;
 		}
 		int fontSize=30;
-		scoreDrawing(g2d,player.getScore(),fontSize); //**score drawing**//
+		scoreDrawing(g2d,player.getScore(),fontSize); //score drawing
 		currentPlayerPos=player.gameObjectToPoint3D();  //converting the player to Point3D .
 		currentPointInPixels=Map.coordsToPixels(currentPlayerPos, getWidth(), getHeight()); //converting the Point3D to pixels.
 		playerFigurePainter(player.getScore(),g2d,currentPointInPixels); //paints the correct player figure (goku/goku2/goku3)
-		
+
 		timeLeftPainter(timeLeft,g2d,fontSize); //paints the time left on the clock
 		if(isOver) gameOverPainter(g2d,rank); //paints the "game over" and the rank at the end of the game
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	@Override
 	/**
@@ -415,24 +401,22 @@ public class Window4 extends JFrame implements MouseListener,ActionListener {
 		}
 
 	}
-
 	////this method creates the Characters according to the given board//// 
 	public void creatingGameCharacters(ArrayList<String> initialGameBoard) {
-
 		for(int i=1;i<initialGameBoard.size();i++) { // creates an object for each character
 			String temp=initialGameBoard.get(i); //the current objects info
 			String [] splitedRow = temp.split(",");
-			String objectTypeName=splitedRow[0]; //the type of the object ("P"/"B"/"F"/"G")
-			ObjectFactory objectFactory= new ObjectFactory();
-			GameObject objectType=objectFactory.makeObject(objectTypeName,splitedRow); //makes the relevant object
-			insertObjectToList(objectType,mainPacmanList,mainFruitsList,mainBoxList,mainGhostsList);	
+			if(splitedRow[0].equals("P") || splitedRow[0].equals("B")||splitedRow[0].equals("F")||splitedRow[0].equals("G")) {
+				String objectTypeName=splitedRow[0]; //the type of the object ("P"/"B"/"F"/"G")
+				ObjectFactory objectFactory= new ObjectFactory();
+				GameObject objectType=objectFactory.makeObject(objectTypeName,splitedRow); //makes the relevant object
+				insertObjectToList(objectType,mainPacmanList,mainFruitsList,mainBoxList,mainGhostsList);	
+			}
 		}
 	}
-
 	////this method inserts the Characters to the relevant arrayList according to the object type//// 
 	public void insertObjectToList(GameObject objectType,PacmanList mainPacmanList, FruitsList mainFruitsList, BoxList mainBoxList,
 			GhostsList mainGhostsList) {
-
 		if(objectType.getClass().getName().equals(PACMAN)) 
 			mainPacmanList.add(objectType);  //inserts the pacman to the pacmans list                 
 		else if(objectType.getClass().getName().equals(FRUIT))
@@ -443,14 +427,8 @@ public class Window4 extends JFrame implements MouseListener,ActionListener {
 			mainBoxList.add(objectType);     //inserts the box to the box list  
 	}
 
-
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-
-	}
-
-
-	
+	public void actionPerformed(ActionEvent arg0) {}
 	private void readAllImages() {
 		try {
 			///reads all the images///
@@ -469,10 +447,9 @@ public class Window4 extends JFrame implements MouseListener,ActionListener {
 		}			
 
 	}
-
-	
-	//////**private painter  methods**///////
-	
+	/////////////////////////////////////
+	////**private painter  methods**/////
+	/////////////////////////////////////
 
 	/**
 	 * this method gets the boxList iterator and draws the boxes on the map according to it.
@@ -495,7 +472,6 @@ public class Window4 extends JFrame implements MouseListener,ActionListener {
 			}
 		}
 	}
-
 	/**
 	 * this method gets the pacman list iterator and draws the pacman on the map according to it.
 	 * @param pacmanIterator
@@ -510,7 +486,6 @@ public class Window4 extends JFrame implements MouseListener,ActionListener {
 		}
 
 	}
-
 	/**
 	 * this method gets the fruits list iterator and draws the fruits on the map according to it
 	 * @param fruitIterator
@@ -601,7 +576,7 @@ public class Window4 extends JFrame implements MouseListener,ActionListener {
 	private void timeLeftPainter(double timeLeft, Graphics2D g2d, int fontSize) {
 		timeLeft = timeLeft/100;
 		timeLeftPaint =(int)timeLeft;
-		
+
 		g2d.setFont(new Font("ariel", Font.PLAIN, fontSize));
 		g2d.setColor(Color.black);
 		for(int i=7;i<14;i++) g2d.drawString("time left: "+timeLeftPaint, getWidth()-(195+i), getHeight()-i);
@@ -609,7 +584,7 @@ public class Window4 extends JFrame implements MouseListener,ActionListener {
 		g2d.drawString("time left: "+timeLeftPaint, getWidth()-205, getHeight()-10);		
 	}
 
-	
+
 	public static void main(String[] args) {
 		Window4 window = new Window4();
 		window.setVisible(true);

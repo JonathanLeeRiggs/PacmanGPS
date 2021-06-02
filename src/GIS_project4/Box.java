@@ -25,7 +25,7 @@ public class Box extends GameObject{
 		super(b.id,b.min);
 		this.max=b.max;
 	}
-	
+	@Override
 	public String toString() {
 		String s="Box id: "+id+" ,minLat: "+min.x()+" ,minLon: "+min.y()+" ,minAlt: "+min.z()+
 				" ,maxLat: "+max.x()+" ,maxLon: "+max.y()+" ,maxAlt: "+max.z();

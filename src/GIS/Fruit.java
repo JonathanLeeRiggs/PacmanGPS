@@ -13,7 +13,6 @@ public class Fruit extends GameObject{
 		super();
 		weight=1;
 	}
-	
 	/**
 	 * this method is a constructor.
 	 */
@@ -28,10 +27,12 @@ public class Fruit extends GameObject{
 		super(f.id,f.location);
 		this.weight=f.weight;
 	}
+	@Override
 	public String toString() {
 		String s="Fruit id: "+id+" ,lat: "+lat+" ,lon: "+lon+" ,alt: "+alt+" ,weight: "+weight;
 		return s;
 	}
+	
 	/**
 	 * this method returns the latitude of the fruit.
 	 */
@@ -54,8 +55,9 @@ public class Fruit extends GameObject{
 		return weight;
 	}
 	//////private//////
-	double lat=this.location.x();
-	double lon=this.location.y();
-	double alt=this.location.z();
-	double weight;
+	private double lat=this.location.x();
+	private double lon=this.location.y();
+	private double alt=this.location.z();
+	private double weight;
+	
 }

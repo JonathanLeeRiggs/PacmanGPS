@@ -7,8 +7,6 @@ public class Animation4 implements Runnable {
 	public Animation4(Window4 w4) {
 		this.w4=w4;
 	};
-	
-	
 	@Override 	
 	public void run() {
 		String map_data = w4.play.getBoundingBox();	

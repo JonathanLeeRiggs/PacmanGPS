@@ -2,7 +2,7 @@ package GIS_project4;
 
 import Geom.Point3D;
 
-public class Character extends GameObject{
+public abstract class Character extends GameObject{
 	
 	public Character() {
 		super();
@@ -23,7 +23,6 @@ public class Character extends GameObject{
 		this.speed=playerType.speed;
 		this.radius=playerType.radius;
 	}
-	
 	public double getLat() {
 		return lat;
 	}
@@ -31,22 +30,19 @@ public class Character extends GameObject{
 		this.lat = lat;
 	}
 	
-	
 	public double getLon() {
 		return lon;
 	}
 	public void setLon(double lon) {
 		this.lon = lon;
 	}
-	
-	  
+	 
 	public double getAlt() {
 		return alt;
 	}
 	public void setAlt(double alt) {
 		this.alt = alt;
 	}
-	
 	
 	public double getSpeed() {
 		return speed;
@@ -55,17 +51,21 @@ public class Character extends GameObject{
 		this.alt = alt;
 	}
 	
-	
 	public double getRadius() {
 		return radius;
 	}
 	public void setRadius(double radius) {
 		this.radius=radius;
 	}
+	@Override
 	public String toString() {
 		String s="id: "+this.id+" ,lat: "+this.lat+" ,lon: "+this.lon+" ,alt: "+this.alt+" ,speed: "+this.speed+" ,radius: "+this.radius;
 		return s;
 	}
+	
+	
+	
+	/////protected variables////
 	protected double lat=this.location.x();
 	protected double lon=this.location.y();
 	protected double alt=this.location.z();

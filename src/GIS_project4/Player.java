@@ -28,7 +28,6 @@ public class Player extends Character{
 		super(player.id,player.lat,player.lon,player.alt,player.speed,player.radius);
 	}
 	
-
 	/**
 	 * this method returns the player's score.
 	 */
@@ -98,7 +97,6 @@ public class Player extends Character{
 		return azimuth;
 	}
 
-	
 	//////private///////
 	private double score;
 }

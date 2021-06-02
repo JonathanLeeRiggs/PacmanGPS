@@ -3,7 +3,7 @@ package GIS_project4;
 import Coords.myCoords;
 import Geom.Point3D;
 
-public class GameObject {
+public abstract class GameObject {
 
 	public GameObject() {
 		id=0;
@@ -18,6 +18,7 @@ public class GameObject {
 		objectType.location=location;
 	}
 	
+	public abstract String toString();
 	/**
 	 * this method returns a point with the coordinates values of a gameObject.
 	 */
